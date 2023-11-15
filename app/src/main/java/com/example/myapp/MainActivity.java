@@ -33,16 +33,16 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        getMenuInflater().inflate(R.menu.context_menu, menu);
         int res = v.getId();
-        if (res == R.id.textView) getMenuInflater().inflate(R.menu.context_menu_color, menu);
-        else if (res == R.id.textView2) getMenuInflater().inflate(R.menu.context_menu_size, menu);
+        if (res == R.id.textView) menu.setGroupVisible(R.id.group_2, false);
+        else if (res == R.id.textView2) menu.setGroupVisible(R.id.group_1, false);
         super.onCreateContextMenu(menu, v, menuInfo);
     }
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         int res = item.getItemId();
-
         if (res == R.id.color_red) {
             tv1.setTextColor(Color.RED);
             tv1.setText("Text color red");
